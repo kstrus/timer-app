@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+
+const timerStyles = {
+    fontFamily: 'sans-serif',
+    width: 400,
+    height: 200,
+    lineHeight: '200px',
+    fontSize: 100,
+    border: '1px solid #ccc',
+    textAlign: 'center',
+    margin: '100px auto'
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [ time, setTime ] = useState(0);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setTime(time + 1);
+        }, 1000);
+    });
+
+    return (
+        <div style={timerStyles}>{time}</div>
+    );
 }
 
 export default App;
